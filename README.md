@@ -38,3 +38,7 @@
 
 // Tab three: ??? maybe page where you create a match and add it to the list
 // Create match: add opponent name, date, and select your players on the floor (I'll preload our team probably)
+
+
+// TODO: Figure out how to store matches and then easily view just that whole match
+// Figure out how to save match in progress to SQLite db so progress is not lost

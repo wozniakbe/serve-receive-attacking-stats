@@ -1,4 +1,4 @@
-enum AttackOutcome {
+export enum AttackOutcome {
     KILL,
     ATTEMPT,
     ERROR

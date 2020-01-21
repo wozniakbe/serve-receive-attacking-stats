@@ -4,6 +4,87 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-text-center">
+
+  <!-- Possible question prompts -->
+  <h2 *ngIf="currentState == State.ROTATION">Which rotation are you receiving in?</h2>
+  <h2 *ngIf="currentState == State.RECEIVE_PLAYER">Who received the serve?</h2>
+  <h2 *ngIf="currentState == State.RECEIVE_RATING">What was the rating of the pass (0-3)?</h2>
+  <h2 *ngIf="currentState == State.ATTACK">What was the attack outcome?</h2>
+  <!-- End possible question prompts -->
+
+  <ion-grid *ngIf="currentState == State.ROTATION">
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="selectRotation(1)">
+          1
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="selectRotation(2)">
+          2
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="selectRotation(3)">
+          3
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="selectRotation(4)">
+          4
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="selectRotation(5)">
+          5
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="selectRotation(6)">
+          6
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="currentState == State.RECEIVE_PLAYER">
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="selectRotation(1)">
+            1
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="selectRotation(2)">
+            2
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="selectRotation(3)">
+            3
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="selectRotation(4)">
+            4
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="selectRotation(5)">
+            5
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="selectRotation(6)">
+            6
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
 </ion-content>
