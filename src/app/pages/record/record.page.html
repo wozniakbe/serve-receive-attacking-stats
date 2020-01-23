@@ -1,7 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>record</ion-title>
-  </ion-toolbar>
+    <ion-title>MSOE v {{match.opponent}}</ion-title>
+  <ion-buttons slot="end">
+    <ion-button (click)="finishMatch()">
+      <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-text-center">
@@ -14,62 +19,123 @@
   <!-- End possible question prompts -->
 
   <ion-grid *ngIf="currentState == State.ROTATION">
-    <ion-row>
+    <ion-row class="row-fill">
       <ion-col>
-        <ion-button (click)="selectRotation(1)">
+        <ion-button class="large-text-button" (click)="selectRotation(1)">
           1
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="selectRotation(2)">
+        <ion-button class="large-text-button" (click)="selectRotation(2)">
           2
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="selectRotation(3)">
+        <ion-button class="large-text-button" (click)="selectRotation(3)">
           3
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="row-fill">
       <ion-col>
-        <ion-button (click)="selectRotation(4)">
+        <ion-button class="large-text-button" (click)="selectRotation(4)">
           4
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="selectRotation(5)">
+        <ion-button class="large-text-button" (click)="selectRotation(5)">
           5
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="selectRotation(6)">
+        <ion-button class="large-text-button" (click)="selectRotation(6)">
           6
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-list lines="none" *ngFor="let player of players">
-    <ion-item-sliding>
-      <ion-item (click)="selectPlayer(player)">
-        <ion-button color="tertiary" full class="ion-justify-content-start">
-          <ion-grid>
-            <ion-row>
-              <ion-col size="8">
-                <ion-label class="ion-text-start">{{ player.name }}</ion-label>
-              </ion-col>
-              <ion-col size="4">
-                <ion-label class="ion-text-end">#{{ player.jerseyNumber }}</ion-label>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+  <ng-container *ngIf="currentState == State.RECEIVE_PLAYER">
+    <ion-list lines="none" *ngFor="let player of players">
+      <ion-item-sliding>
+        <ion-item (click)="selectPlayer(player)">
+          <ion-button color="tertiary" full class="ion-justify-content-start large-text-button">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <ion-label class="ion-text-start">{{ player.name }}</ion-label>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-label class="ion-text-end">#{{ player.jerseyNumber }}</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-button>
+        </ion-item>
+        <ion-item-options side="start">
+          <ion-item-option (click)="substitutePlayer(player)">Substitute</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ng-container>
+
+  <ion-grid *ngIf="currentState == State.RECEIVE_RATING">
+    <ion-row class="row-fill">
+      <ion-col>
+        <ion-button class="large-text-button" color="secondary" (click)="selectPassRating(0)">
+          0
         </ion-button>
-      </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option (click)="substitutePlayer(player)">Substitute</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-button class="large-text-button" color="secondary" (click)="selectPassRating(1)">
+          1
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-fill">
+      <ion-col>
+        <ion-button class="large-text-button" color="secondary" (click)="selectPassRating(2)">
+          2
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button class="large-text-button" color="secondary" (click)="selectPassRating(3)">
+          3
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ng-container *ngIf="currentState == State.ATTACK">
+    <ion-grid>
+      <ion-row class="row-list">
+        <ion-col size="2"></ion-col>
+        <ion-col size="8">
+          <ion-button class="large-text-button" color="success" (click)="selectAttackOutcome(AttackOutcome.KILL)">
+            Kill
+          </ion-button>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>
+      <ion-row class="row-list">
+        <ion-col size="2"></ion-col>
+        <ion-col size="8">
+          <ion-button class="large-text-button" color="danger" (click)="selectAttackOutcome(AttackOutcome.ERROR)">
+            Error
+          </ion-button>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>
+      <ion-row class="row-list">
+        <ion-col size="2"></ion-col>
+        <ion-col size="8">
+          <ion-button class="large-text-button" color="warning" (click)="selectAttackOutcome(AttackOutcome.ATTEMPT)">
+            Attempt
+          </ion-button>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
 
 </ion-content>

@@ -21,6 +21,7 @@ export class RecordPage implements OnInit {
   // private libero: string;
   // private middles: string[];
   State = State; // this allows the enum to be accessible from the template page
+  AttackOutcome = AttackOutcome; // same thing as above
 
   constructor(
     // TODO: Inject PassService
@@ -110,6 +111,7 @@ export class RecordPage implements OnInit {
   private finishMatch(){
     // TODO: Save Match somewhere, probably to datastore
     this.currentState = State.SELECT_MATCH;
+    console.log("Submitted match allegedly.");
   }
 
 }

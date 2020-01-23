@@ -2,11 +2,21 @@ ion-grid {
     height: 100%;
   }
 
-  ion-row {
-    height: 50%;
+  // ion-row {
+  //   height: 50%;
+  // }
+
+  .row-fill {
+    height: 40%;
   }
 
- ion-button {
+  .row-list {
+    height: 13%;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+  }
+
+.large-text-button {
     width: 100% !important;
     height: 100% !important;
     font-size: 1.6rem;
