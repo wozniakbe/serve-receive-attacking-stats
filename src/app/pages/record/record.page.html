@@ -12,16 +12,16 @@
 <ion-content class="ion-text-center">
 
   <!-- Possible question prompts -->
-  <h2 *ngIf="currentState == State.ROTATION">Which rotation are you receiving in?</h2>
-  <h2 *ngIf="currentState == State.RECEIVE_PLAYER">Who received the serve?</h2>
-  <h2 *ngIf="currentState == State.RECEIVE_RATING">What was the rating of the pass (0-3)?</h2>
-  <h2 *ngIf="currentState == State.ATTACK">What was the attack outcome?</h2>
+  <h2 *ngIf="currentState == State.ROTATION" style="margin: 1.5em 0.5em 2.5em 0.5em">Which rotation are you receiving in?</h2>
+  <h2 *ngIf="currentState == State.RECEIVE_PLAYER" style="margin: 0.5em">Who received the serve?</h2>
+  <h2 *ngIf="currentState == State.RECEIVE_RATING" style="margin: 1.5em 0.5em 2.5em 0.5em">What was the rating of the pass (0-3)?</h2>
+  <h2 *ngIf="currentState == State.ATTACK" style="margin: 1.5em 0.5em 2.5em 0.5em">What was the attack outcome?</h2>
   <!-- End possible question prompts -->
 
   <ion-grid *ngIf="currentState == State.ROTATION">
     <ion-row class="row-fill">
       <ion-col>
-        <ion-button class="large-text-button" (click)="selectRotation(1)">
+        <ion-button class="large-text-button square" (click)="selectRotation(1)">
           1
         </ion-button>
       </ion-col>
